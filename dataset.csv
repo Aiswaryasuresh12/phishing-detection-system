@@ -1,0 +1,11 @@
+url,length,has_at,has_dash,has_login,label
+google.com,10,0,0,0,0
+facebook.com,12,0,0,0,0
+amazon.com,10,0,0,0,0
+login-bank-security.com,25,0,1,1,1
+verify-paypal-account.com,27,0,1,1,1
+secure-login-update.com,23,0,1,1,1
+bank-account-verify.com,24,0,1,1,1
+gmail.com,9,0,0,0,0
+microsoft.com,14,0,0,0,0
+update-bank-login.com,21,0,1,1,1

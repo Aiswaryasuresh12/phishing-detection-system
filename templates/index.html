@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Phishing Detection and Awareness System</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding-top:60px;
+}
+
+.container{
+background:#1e293b;
+width:600px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0px 0px 20px black;
+}
+
+input{
+width:80%;
+padding:12px;
+margin:10px;
+border:none;
+border-radius:6px;
+}
+
+button{
+padding:12px 25px;
+background:#22c55e;
+border:none;
+border-radius:6px;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:5px;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+/* Loading Spinner */
+
+.loader{
+border:6px solid #334155;
+border-top:6px solid #22c55e;
+border-radius:50%;
+width:40px;
+height:40px;
+animation:spin 1s linear infinite;
+margin:auto;
+display:none;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+.progress{
+width:100%;
+background:#334155;
+border-radius:10px;
+margin-top:20px;
+}
+
+.progress-bar{
+height:25px;
+border-radius:10px;
+}
+
+.safe{background:#22c55e;}
+.medium{background:#facc15;}
+.danger{background:#ef4444;}
+
+.dashboard{
+display:flex;
+justify-content:space-around;
+margin-top:30px;
+}
+
+.card{
+background:#334155;
+padding:15px;
+border-radius:8px;
+width:150px;
+}
+
+</style>
+
+<script>
+
+function showLoader(){
+document.getElementById("loader").style.display="block";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔐 AI Phishing Detection and Awareness System</h1>
+
+<!-- URL Scan Form -->
+
+<form action="/check_url" method="POST" onsubmit="showLoader()">
+
+<input type="text" name="url" placeholder="Enter Website URL" required>
+
+<br>
+
+<button type="submit">Scan Website</button>
+
+</form>
+
+<!-- Navigation Buttons -->
+
+<br>
+
+<a href="/awareness">
+<button>Phishing Awareness</button>
+</a>
+
+<a href="/quiz">
+<button>Awareness Quiz</button>
+</a>
+
+<br><br>
+
+<div id="loader" class="loader"></div>
+
+{% if prediction %}
+
+<h2>{{ prediction }}</h2>
+
+<h3>Risk Level: {{ risk }}</h3>
+
+<div class="progress">
+
+<div class="progress-bar
+{% if score < 30 %}safe
+{% elif score < 70 %}medium
+{% else %}danger
+{% endif %}
+"
+style="width: {{score}}%">
+</div>
+
+</div>
+
+<p>Threat Score: {{score}}%</p>
+
+{% endif %}
+
+<h2>Security Dashboard</h2>
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Total Scanned</h3>
+<p>{{total}}</p>
+</div>
+
+<div class="card">
+<h3>Phishing</h3>
+<p>{{phishing}}</p>
+</div>
+
+<div class="card">
+<h3>Safe</h3>
+<p>{{safe}}</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<hr>
+
+<h2>📧 Email Phishing Detection</h2>
+
+<form action="/check_email" method="POST">
+
+<textarea
+name="email"
+placeholder="Paste suspicious email or message here"
+rows="6"
+style="width:80%;padding:12px;border-radius:6px;">
+</textarea>
+
+<br><br>
+
+<button type="submit">Scan Email</button>
+
+</form>
+
+{% if email_result %}
+
+<h2>{{ email_result }}</h2>
+
+<h3>Risk Level: {{ email_risk }}</h3>
+
+{% endif %}

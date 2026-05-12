@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Phishing Awareness Quiz</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:#1e293b;
+width:700px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+}
+
+.question{
+text-align:left;
+margin-top:20px;
+}
+
+button{
+padding:10px 20px;
+margin-top:20px;
+background:#22c55e;
+border:none;
+border-radius:6px;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function checkQuiz(){
+
+let score = 0;
+
+let q1 = document.querySelector('input[name="q1"]:checked');
+let q2 = document.querySelector('input[name="q2"]:checked');
+
+if(q1 && q1.value=="b"){score++;}
+if(q2 && q2.value=="a"){score++;}
+
+document.getElementById("result").innerHTML =
+"Your Score: "+score+" / 2";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🧠 Phishing Awareness Quiz</h1>
+
+<div class="question">
+
+<h3>1️⃣ Which URL is most likely phishing?</h3>
+
+<input type="radio" name="q1" value="a"> https://google.com<br>
+<input type="radio" name="q1" value="b"> https://secure-google-login.xyz<br>
+<input type="radio" name="q1" value="c"> https://wikipedia.org<br>
+
+</div>
+
+<div class="question">
+
+<h3>2️⃣ What is the safest action when receiving a suspicious email?</h3>
+
+<input type="radio" name="q2" value="a"> Do not click the link<br>
+<input type="radio" name="q2" value="b"> Enter your password<br>
+<input type="radio" name="q2" value="c"> Share with friends<br>
+
+</div>
+
+<button onclick="checkQuiz()">Submit Quiz</button>
+
+<h2 id="result"></h2>
+
+<br>
+
+<a href="/">⬅ Back to Detection System</a>
+
+</div>
+
+</body>
+</html>
